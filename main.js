@@ -38,6 +38,16 @@ function showShoppingCart(){
 }
 
 
+//PRODUCT CONTENT DETAIL 
+const productContentDetail = document.querySelector(".product-content-detail");
+
+const hiddeButtonProductContent = document.querySelector(".product-content-detail-close")
+hiddeButtonProductContent.addEventListener("click", hideProductContentDetail)
+function hideProductContentDetail(){
+    productContentDetail.classList.add("inactive"); 
+}
+
+
 
 //LIST PRODUCTS RENDERING
 
@@ -115,7 +125,6 @@ productList.push({
 
 
 
-
 function productListRendering(arr){
     let productsContainer = document.querySelector(".cards-container");
     for (const product of arr) {
@@ -123,7 +132,11 @@ function productListRendering(arr){
         let productCard = document.createElement("div");
         productCard.classList.add("product-card");
         productsContainer.append(productCard);
-        productCard.addEventListener("click", showProductContentDetail);
+
+        let imageProduct = document.createElement("img");
+        imageProduct.setAttribute("src", product.image);
+
+        imageProduct.addEventListener("click", showProductContentDetail);
 
         function showProductContentDetail(){
             productContentDetail.classList.remove("inactive");
@@ -142,9 +155,7 @@ function productListRendering(arr){
             let detailDescriptionProduct = document.getElementById("descriptionProduct");
             detailDescriptionProduct.innerText = product.description;
         };
-        
-        let imageProduct = document.createElement("img");
-        imageProduct.setAttribute("src", product.image);
+
 
         let infoContainer = document.createElement("div");
         infoContainer.classList.add("product-info");
@@ -172,11 +183,8 @@ function productListRendering(arr){
 
 productListRendering(productList);
 
-//PRODUCT CONTENT DETAIL 
-const productContentDetail = document.querySelector(".product-content-detail");
 
-const hiddeButtonProductContent = document.querySelector(".product-content-detail-close")
-hiddeButtonProductContent.addEventListener("click", hideProductContentDetail)
-function hideProductContentDetail(){
-    productContentDetail.classList.add("inactive"); 
-}
+
+
+
+
